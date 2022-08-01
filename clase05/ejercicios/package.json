@@ -1,0 +1,14 @@
+{
+  "name": "ejercicios",
+  "version": "1.0.0",
+  "description": "",
+  "main": "05_problem_03.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "~2.29.4"
+  }
+}
