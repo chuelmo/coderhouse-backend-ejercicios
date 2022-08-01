@@ -1,0 +1,66 @@
+PS E:\chuelmo\Desktop\CoderHouse\backend\clase4\desafioManejoArchivos> node .\manejoDeArchivos.js
+| Método: deleteAll() | - Comenzamos el ejercicio vaciando el archivo
+
+| Método: getAll() | - Así está ahora el archivo productos.txt:  []
+
+| Método: save(item) | - Vamos ahora a agregar 3 productos al archivo.
+
+| Método: getAll() | - Estos son todos los productos insertados id: 1 id: 2 id: 3
+[
+  {
+    title: 'Escuadra',
+    price: 123.45,
+    thumbnail: 'http://localhost:3000',
+    id: 1
+  },
+  {
+    title: 'Calculadora',
+    price: 345.75,
+    thumbnail: 'http://localhost:3000',
+    id: 2
+  },
+  {
+    title: 'Globo Terráqueo',
+    price: 459.9,
+    thumbnail: 'http://localhost:3000',
+    id: 3
+  }
+]
+
+| Método: getByField(campo, valor) | - Ahora voy a recuperar por el campo title la calculadora
+{
+  title: 'Calculadora',
+  price: 345.75,
+  thumbnail: 'http://localhost:3000',
+  id: 2
+}
+
+| Método: getById(id) | - Ahora voy a recuperar el producto con id 1
+{
+  title: 'Escuadra',
+  price: 123.45,
+  thumbnail: 'http://localhost:3000',
+  id: 1
+}
+
+| Método: deleteById(id) | - Ahora voy a borrar el producto con id 2
+
+| Método: getAll() | - Estos son todos los productos que quedaron
+[
+  {
+    title: 'Escuadra',
+    price: 123.45,
+    thumbnail: 'http://localhost:3000',
+    id: 1
+  },
+  {
+    title: 'Globo Terráqueo',
+    price: 459.9,
+    thumbnail: 'http://localhost:3000',
+    id: 3
+  }
+]
+
+| Método: save(item) | - Por último, obtendremos una excepción al intentar insertar un producto repetido
+Error: Error: item duplicado
+PS E:\chuelmo\Desktop\CoderHouse\backend\clase4\desafioManejoArchivos>
