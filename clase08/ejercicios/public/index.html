@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Backend clase 8 - express static</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="nav-bar">
+            <p class="brand">Probando endpoints - Clase 8</p>
+        </div>
+        <div class="box-wrapper-uno">
+            <div class="box">
+                <h2>Agregar Personas</h2>
+                <form id="formPersona">
+                    <div>
+                        <input type="text" id="p_nombre" placeholder="Nombre">
+                    </div>
+                    <div>
+                        <input type="text" id="p_apellido" placeholder="Apellido">
+                    </div>
+                    <div>
+                        <input type="text" id="p_edad" placeholder="Edad">
+                    </div>
+                </form>
+                <button onclick="sendPersona()">Add Persona</button>
+            </div>
+        </div>
+        <div class="box-wrapper-dos">
+            <div class="box">
+                <h2>Agregar Mascotas</h2>
+                <form id="formPersona">
+                    <div>
+                        <input type="text" id="m_nombre" placeholder="Nombre">
+                    </div>
+                    <div>
+                        <input type="text" id="m_raza" placeholder="Raza">
+                    </div>
+                    <div>
+                        <input type="text" id="m_edad" placeholder="Edad">
+                    </div>
+                </form>
+                <button onclick="sendMascota()">Add Mascota</button>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p class="copyright"> © chuelmo - 2022 </p>
+    </footer>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
