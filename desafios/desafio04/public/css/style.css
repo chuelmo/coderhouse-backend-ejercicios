@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 1s;
+    text-decoration: none;
+}
+
+html,
+body {
+    font-family: 'Open Sans Condensed', sans-serif;
+    letter-spacing: 0.2em;
+    font-size: 0.98em;
+}
+
+.wrapper {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "nav-bar"
+        "letra"
+        "box"
+        "footer";
+}
+
+.nav-bar {
+    grid-area: nav-bar;
+    height: 70px;
+    box-shadow: 0 1px 6px rgba(57, 73, 76, 0.35);
+}
+
+.letra {
+    grid-area: letra;
+    box-shadow: 0 1px 6px rgba(57, 73, 76, 0.35);
+    padding: 7px;
+    padding-left: 30px;
+}
+
+.brand {
+    font-size: 2.3em;
+    text-transform: uppercase;
+    margin-left: 20px;
+    padding: 10px 10px;
+    line-height: 1.42857;
+    color: #222;
+}
+
+.box-wrapper {
+    height: 480px;
+    position: relative;
+}
+
+.box {
+    grid-area: box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background-color: #FFF;
+    padding: 40px;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, .1);
+    box-shadow: 0 3px 60px rgba(57, 73, 76, 0.35);
+}
+
+.box h2 {
+    margin: 0 0 40px;
+    padding: 0;
+    color: #222;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.box input {
+    padding: 10px 0;
+    margin-bottom: 30px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: none;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #999;
+}
+
+.box button {
+    font-size: 1.1em;
+    border: none;
+    cursor: pointer;
+    background: #37a000;
+    color: #FFF;
+    width: 100%;
+    padding: 10px;
+}
+
+.box form div {
+    position: relative;
+}
+
+.footer {
+    grid-area: footer;
+    height: 80px;
+    background-color: #999898;
+}
+
+.copyright {
+    text-align: center;
+    line-height: 32px;
+    margin-top: 5px;
+    color: #e0e0e0;
+}

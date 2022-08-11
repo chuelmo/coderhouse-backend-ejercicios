@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Desafío 4</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="nav-bar">
+            <p class="brand">Coderhouse - Desafío 4 - API RESTful</p>
+        </div>
+        <div class="letra">
+            <h2>Endpoints:</h2>
+            <ul>
+                <li>GET --&gt; /api/productos --&gt; Devuelve todos los productos</li>
+                <li>GET --&gt; /api/productos/:id --&gt; Devuelve un producto según su ID</li>
+                <li>POST --&gt; /api/productos --&gt; Recibe y agrega un producto, lo devuelve son su ID asignado</li>
+                <li>PUT --&gt; /api/productos/:id --&gt; Recibe y actualiza un producto según su ID</li>
+                <li>DELETE --&gt; /api/productos/:id --&gt; Elimina un producto según su ID</li>
+            </ul>
+        </div>
+        <div class="box-wrapper">
+            <div class="box">
+                <h2>Agregar Productos</h2>
+                <form id="formProducto">
+                    <div>
+                        <input type="text" id="p_title" placeholder="Title">
+                    </div>
+                    <div>
+                        <input type="text" id="p_price" placeholder="Price">
+                    </div>
+                    <div>
+                        <input type="text" id="p_thumbnail" placeholder="Thumbnail (url)">
+                    </div>
+                </form>
+                <button onclick="sendProducto()">Add Producto</button>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p class="copyright"> © chuelmo - 2022 </p>
+    </footer>
+    
+    <script src="./js/main.js"></script>
+</body>
+</html>
