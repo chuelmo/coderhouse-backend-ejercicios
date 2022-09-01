@@ -1,0 +1,5 @@
+<h1>Mi motor de plantillas personalizado</h1>
+<p>Nombre: <span>^^nombre$$</span></p>
+<p>Apellido: <span>^^apellido$$</span></p>
+<hr>
+<p>Fecha y hora: <i><b>^^fecha$$</b></i></p>

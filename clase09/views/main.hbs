@@ -1,0 +1,17 @@
+{{!-- main.hbs --}}
+{{> lovedChamps}}
+<br>
+{{> hatedChamps}}
+<br>
+
+<h2>List of my most suggested League champions</h2>
+{{!-- dependiendo del valor de la variable listExists --}}
+{{!-- si esta es true entonces la lista será renderizada --}}
+{{!-- si es false entonces la lista NO será renderizada --}}
+{{#if listExists}}
+<ul>
+    {{#each suggestedChamps}}
+    <li class={{this.lane}}>{{this.name}}</li>
+    {{/each}}
+</ul>
+{{/if}}
