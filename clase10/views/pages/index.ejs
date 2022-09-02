@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head.ejs', {title: 'EJS is Fun!'}); %>
+  </head>
+  <body class="container">
+    <header><%- include('../partials/header.ejs'); %></header>
+
+    <main>
+      <div class="p-5 mb-4 bg-dark rounded-3">
+        <div class="container-fluid py-5 text-white">
+          <h1 class="display-5 fw-bold">Top Mascots</h1>
+          <p class="col-md-8 fs-4"><%= tagline %></p>
+          <ul>
+            <% mascots.forEach(function(mascot) { %>
+              <li>
+                <strong><%= mascot.name %></strong> representing <%= mascot.organization %>, born <%= mascot.birth_year %>
+              </li>
+            <% }); %>
+          </ul>
+        </div>
+      </div>
+    </main>
+
+    <footer><%- include('../partials/footer.ejs'); %></footer>
+  </body>
+</html>

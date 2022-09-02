@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head.ejs', {title: 'Desafio 1 de EJS'}); %>
+  </head>
+  <body class="container">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a href="/hello" class="navbar-brand">EJS is fun!</a>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a href="/hello" class="nav-link">Hello</a>
+          </li>
+          <li class="nav-item">
+            <a href="/datos" class="nav-link">Datos</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="p-5 mb-4 bg-dark rounded-3">
+        <div class="container-fluid py-5 text-white">
+          <h1 class="display-5 fw-bold"><%= mensaje %></h1>
+          <p class="col-md-8 fs-4">Desafío con EJS, qué bueno!</p>
+        </div>
+      </div>
+    </main>
+
+    <footer><%- include('./partials/footer.ejs'); %></footer>
+  </body>
+</html>
