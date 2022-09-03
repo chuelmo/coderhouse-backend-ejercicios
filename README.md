@@ -1,3 +1,12 @@
+# Desafío 5 - Templates (hbs ejs pug)
+
+- Este repo es un "popurrí" de ejercicios hechos durante el curso de full-stack en Coderhouse, por lo tanto no es una única aplicación, sino por el contrario son montones de ejercicios y desafíos, agrupados por clases y desafíos.
+- En el caso de este desafío, para correrlo, luego de clonar el repo se deben seguir los siguientes pasos:
+  - Dentro de la carpeta del repo, moverse a la carpeta .\desafios\desafio05
+  - Ejecutar: npm install
+  - Por último correr: npm run start-ZZZ donde ZZZ puede ser una de las siguientes 3 opciones: hbs, ejs, pug
+    - Ej: npm run start-hbs
+
 # Desafío 4 - API RESTful
 
 - Este desafío se encuentra en la carpeta "desafio04" de este repo.
