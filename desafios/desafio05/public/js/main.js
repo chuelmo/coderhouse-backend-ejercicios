@@ -32,4 +32,6 @@ function enviarDatos() {
 }
 
 const boton = document.getElementById('enviar');
-boton.addEventListener('click', enviarDatos);
+if (boton) {
+    boton.addEventListener('click', enviarDatos);
+}

@@ -1,3 +1,26 @@
+# Desafío 6 - Websockets
+
+## Consigna 1:
+
+Modificar el último entregable para que disponga de un canal de websocket que permita representar, por debajo del formulario de ingreso, una tabla con la lista de productos en tiempo real.
+
+- Puede haber varios clientes conectados simultáneamente y en cada uno de ellos se reflejarán los cambios que se realicen en los productos sin necesidad de recargar la vista.
+- Cuando un cliente se conecte, recibirá la lista de productos a representar en la vista.
+
+## Consigna 2:
+
+Añadiremos al proyecto un canal de chat entre los clientes y el servidor.
+
+### Como correr el desafío
+
+- Clonar el repo
+- Moverse al directorio desafios/desafio06
+- Ejecutar npm install
+- Por último correr: npm run start-ZZZ donde ZZZ puede ser una de las siguientes 3 opciones: hbs, ejs, pug
+  - Ej: npm run start-hbs
+
+### El desafío está implementado con los 3 motores de templates que vimos.
+
 # Desafío 5 - Templates (hbs ejs pug)
 
 - Este repo es un "popurrí" de ejercicios hechos durante el curso de full-stack en Coderhouse, por lo tanto no es una única aplicación, sino por el contrario son montones de ejercicios y desafíos, agrupados por clases y desafíos.

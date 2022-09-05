@@ -1,0 +1,43 @@
+{{> barraMenu}}
+
+<main class="container-fluid">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-10">
+            <h1 class="mt-3 mb-3 text-primary">Listado de Productos</h1>
+        </div>
+        <div class="col"></div>
+    </div>
+    {{#if hayProductos}}
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-10">
+            <table class="table bg-dark">
+                <tr>
+                    <th class="text-warning">Nombre</th>
+                    <th class="text-warning">Precio</th>
+                    <th class="text-warning">Imagen</th>
+                </tr>
+                {{#each productos}}
+                <tr>
+                    <td class="text-white">{{this.title}}</td>
+                    <td class="text-white">{{this.price}}</td>
+                    <td class="text-white"><img src={{this.thumbnail}} alt="imagen" height="64"></td>
+                </tr>
+                {{/each}}
+            </table>
+        </div>
+        <div class="col"></div>
+    </div>
+    {{else}}
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-10">
+            <p class="mt-3 mb-3 p-3 aviso">No se encontraron productos</p>
+        </div>
+        <div class="col"></div>
+    </div>
+    {{/if}}
+</main>
+
+{{> piePagina}}
