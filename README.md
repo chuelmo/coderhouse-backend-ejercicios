@@ -1,3 +1,15 @@
+# Desafío 7 - Primer entrega del Proyecto Final
+
+## Como correr este desafío
+
+Como he venido explicando en entregas anteriores, este repo no es un solo proyecto sino que tiene todos y cada uno de los distintos ejercicios que hemos venido haciendo, tanto en clase como desafíos asignados. Por lo tanto para correr este desafío en su máquina personal debe tener los siguientes puntos en consideración.
+
+- Clonar el repo
+- Dentro de la carpeta del repo moverse a la carpeta /desafios/desafio07/
+- En la carpeta /desafios/desafio07/ ejecutar:
+  - npm install
+  - npm run dev
+
 # Desafío 6 - Websockets
 
 ## Consigna 1:
