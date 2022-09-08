@@ -35,5 +35,15 @@
     "fotoUrl": "https://cdn2.iconfinder.com/data/icons/gentle-edges-icon-set/128/Iconfinder_0042_4.png",
     "precio": 2001,
     "stock": 44
+  },
+  {
+    "id": 5,
+    "timestamp": 1662653280110,
+    "nombre": "Regla",
+    "descripcion": "Para medir",
+    "codigo": "cbv45",
+    "fotoUrl": "https://cdn3.iconfinder.com/data/icons/social-media-2169/24/social_media_social_media_logo_imo-128.png",
+    "precio": "34",
+    "stock": "2"
   }
 ]

@@ -11,6 +11,16 @@ app.use(express.static(__dirname + '/../../public'));
 app.use(api.basePath + '/productos', networkProduct);
 app.use(api.basePath + '/carrito', networkCart);
 
+app.get('*', function(req, res){
+    res.status(404).json({'error': 404, 'description': 'Ruta ' + req.originalUrl + ' método ' + req.method + ' no implementada.'});
+  }
+);
+
+app.post('*', function(req, res){
+    res.status(404).json({'error': 404, 'description': 'Ruta ' + req.originalUrl + ' método ' + req.method + ' no implementada.'});
+  }
+);
+
 const server = app.listen(api.port, () => {
     console.log(`Servidor HTTP escuchando en el puerto ${api.port}`);
 });
