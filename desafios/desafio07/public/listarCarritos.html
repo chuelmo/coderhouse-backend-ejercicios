@@ -86,81 +86,12 @@
       </div>
     </nav>
 
-    <main>
+    <main class="container-fluid">
       <div class="container fondo-gris p-5 mt-3 rounded">
-        <h2 class="mt-3 mb-3 text-primary">Ingrese Producto</h2>
-        <form>
-          <div class="mb-3">
-            <label for="name" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="name" />
-          </div>
-          <div class="mb-3">
-            <label for="desc" class="form-label">Descripción</label>
-            <input type="text" class="form-control" id="desc" />
-          </div>
-          <div class="mb-3">
-            <label for="codigo" class="form-label">Código</label>
-            <input type="text" class="form-control" id="codigo" />
-          </div>
-          <div class="mb-3">
-            <label for="url" class="form-label">Foto URL</label>
-            <input type="text" class="form-control" id="url" />
-          </div>
-          <div class="mb-3">
-            <label for="price" class="form-label">Precio</label>
-            <input type="number" class="form-control" id="price" />
-          </div>
-          <div class="mb-3">
-            <label for="stock" class="form-label">Stock</label>
-            <input type="number" class="form-control" id="stock" />
-          </div>
-        </form>
-        <button class="btn btn-primary" id="enviar">Enviar</button>
-        <h2 class="text-danger mt-3 mb-1">Productos</h2>
-        <div id="productos"></div>
+        <h1 class="mt-3 mb-3 text-primary">Listado de Carritos</h1>
+        <div id="carritos" class="mt-3 mb-3"></div>
       </div>
     </main>
-
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="staticBackdrop"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Producto</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body" id="bodyProduct"></div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Cerrar
-            </button>
-            <button type="button" class="btn btn-primary" id="btnUpdate">
-              Modificar
-            </button>
-            <button type="button" class="btn btn-danger" id="btnDelete">
-              Borrar
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <nav class="navbar fixed-bottom navbar-dark bg-dark">
       <div class="container-fluid text-justify">
@@ -174,6 +105,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="./js/main.js"></script>
+    <script src="./js/carrito.js"></script>
   </body>
 </html>

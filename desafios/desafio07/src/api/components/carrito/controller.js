@@ -96,5 +96,5 @@ module.exports = function() {
         return null;
     }
 
-    return {saveCarrito, deleteById, getProductos, addProductos, delProductoById};
+    return {saveCarrito, deleteById, getProductos, addProductos, delProductoById, getAllCarritos};
 }

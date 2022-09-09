@@ -5,6 +5,7 @@ const Controller = require('./controller');
 const { Carrito } = require('./model');
 
 router.use(checkRouteCarrito);
+router.get('/', getAllCarritos);
 router.post('/', addCart);
 router.delete('/:id', deleteCarritoById);
 router.get('/:id/productos', getAll);
@@ -41,6 +42,19 @@ async function getAll(req, res) {
             res.status(200).json(products);
         } else {
             res.status(200).json({ error : 'carrito no encontrado' });
+        }
+    } catch (e) {
+        res.status(500).send();
+    }
+}
+
+async function getAllCarritos(req, res) {
+    try {
+        const carritos = await Controller().getAllCarritos();
+        if (carritos) {
+            res.status(200).json(carritos);
+        } else {
+            res.status(200).json({ error : 'No hay carritos creados' });
         }
     } catch (e) {
         res.status(500).send();
