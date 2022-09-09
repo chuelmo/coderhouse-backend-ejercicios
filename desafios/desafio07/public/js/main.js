@@ -1,4 +1,5 @@
 const productos = [];
+let oneProduct = {};
 window.addEventListener('load', getAllProducts);
 
 function getAllProducts() {
@@ -12,7 +13,6 @@ function getAllProducts() {
     .then((res) => {
         res.json()
             .then((response) => {
-                console.log('Success:', response);
                 if (Array.isArray(response)) {
                     productos.push(...response);
                     showProductos(productos);
@@ -66,10 +66,10 @@ function enviarDatos() {
     });
 }
 
-function showProductos(productos) {
+function showProductos(listaDeProductos) {
     div_prod = document.getElementById('productos');
     let html = '';
-    if (productos.length > 0) {
+    if (listaDeProductos.length > 0) {
         html = `
         <table class="table bg-dark">
         <tr>
@@ -78,7 +78,7 @@ function showProductos(productos) {
             <th class="text-warning">Precio</th>
             <th class="text-warning">Imagen</th>
         </tr>`;
-        productos.forEach(p => {
+        listaDeProductos.forEach(p => {
             html += `
             <tr>
                 <td class="text-white">
@@ -109,12 +109,7 @@ async function getOneProduct(id) {
     return respuesta;
 }
 
-const modal = document.getElementById('staticBackdrop');
-modal?.addEventListener('show.bs.modal', async (e) => {
-    let id = e.relatedTarget.getAttribute('data-prod-id');
-    console.log(`Se abrió la ventana de detalle del producto con el id: ${id}`);
-    const divBodyProduct = document.getElementById('bodyProduct');
-    let p = await getOneProduct(id);
+function generateProductDetail(p) {
     html = `<form>
     <div class="mb-3">
       <label for="name_detail" class="form-label">Nombre</label>
@@ -122,27 +117,79 @@ modal?.addEventListener('show.bs.modal', async (e) => {
     </div>
     <div class="mb-3">
       <label for="desc_detail" class="form-label">Descripción</label>
-      <input type="text" class="form-control" id="desc_detail" />
+      <input type="text" class="form-control" id="desc_detail" value="${p.descripcion}"/>
     </div>
     <div class="mb-3">
       <label for="codigo_detail" class="form-label">Código</label>
-      <input type="text" class="form-control" id="codigo_detail" />
+      <input type="text" class="form-control" id="codigo_detail" value="${p.codigo}"/>
     </div>
     <div class="mb-3">
       <label for="url_detail" class="form-label">Foto URL</label>
-      <input type="text" class="form-control" id="url_detail" />
+      <input type="text" class="form-control" id="url_detail" value="${p.fotoUrl}"/>
     </div>
     <div class="mb-3">
       <label for="price_detail" class="form-label">Precio</label>
-      <input type="number" class="form-control" id="price_detail" />
+      <input type="number" class="form-control" id="price_detail" value="${p.precio}"/>
     </div>
     <div class="mb-3">
       <label for="stock_detail" class="form-label">Stock</label>
-      <input type="number" class="form-control" id="stock_detail" />
+      <input type="number" class="form-control" id="stock_detail" value="${p.stock}"/>
     </div>
   </form>`;
-    divBodyProduct.innerHTML = html;
+  return html;
+}
+
+const modal = document.getElementById('staticBackdrop');
+
+modal?.addEventListener('show.bs.modal', async (e) => {
+    let id = e.relatedTarget.getAttribute('data-prod-id');
+    console.log(`Se abrió la ventana de detalle del producto con el id: ${id}`);
+    const divBodyProduct = document.getElementById('bodyProduct');
+    oneProduct = await getOneProduct(id);
+    divBodyProduct.innerHTML = generateProductDetail(oneProduct);
 });
+
+async function updateProduct() {
+    console.log('Actualizamos el producto!');
+    let closeModal = bootstrap.Modal.getInstance(modal);
+    let producto = {};
+    producto.nombre = document.getElementById('name_detail').value;
+    producto.descripcion = document.getElementById('desc_detail').value;
+    producto.codigo = document.getElementById('codigo_detail').value;
+    producto.fotoUrl = document.getElementById('url_detail').value;
+    producto.precio = document.getElementById('price_detail').value;
+    producto.stock = document.getElementById('stock_detail').value;
+    closeModal.hide();
+    let res = await fetch(`/api/productos/${oneProduct.id}`, {
+        method: 'PUT',
+        body: JSON.stringify(producto), 
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    let respuesta = await res.json();
+    location.reload();
+}
+
+async function deleteProduct() {
+    console.log('Se borra el producto!');
+    let closeModal = bootstrap.Modal.getInstance(modal);
+    closeModal.hide();
+    let res = await fetch(`/api/productos/${oneProduct.id}`, {
+        method: 'DELETE', 
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    let respuesta = await res.json();
+    location.reload();
+}
 
 const boton = document.getElementById('enviar');
 boton?.addEventListener('click', enviarDatos);
+
+const btnUpdate = document.getElementById('btnUpdate');
+btnUpdate?.addEventListener('click', updateProduct);
+
+const btnDelete = document.getElementById('btnDelete');
+btnDelete?.addEventListener('click', deleteProduct);
