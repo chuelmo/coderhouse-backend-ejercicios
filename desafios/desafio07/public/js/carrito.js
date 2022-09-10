@@ -52,7 +52,7 @@ function showCarritos(listaDeCarritos) {
             let fecha = new Date(c.timestamp);
             html += `
             <tr>
-                <td class="text-white"><a href="#">&gt;&gt; ${c.id} &lt;&lt;</td>
+                <td class="text-white"><a href="/listarProdByCarrito.html?id=${c.id}">&gt;&gt; ${c.id} &lt;&lt;</td>
                 <td class="text-white">${fecha}</td>
                 <td class="text-white"><button class="btn btn-danger btnDeleteCarrito" id="${c.id}">Borrar Carrito</button></td>
             </tr>`;
