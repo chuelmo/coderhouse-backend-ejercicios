@@ -1,0 +1,19 @@
+{
+  "name": "clase11",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev1": "nodemon 11_teoria01.js",
+    "dev2": "nodemon 11_problem01.js",
+    "dev3": "nodemon 11_problem02.js",
+    "dev4": "nodemon 11_problem03.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19",
+    "socket.io": "^4.5.1"
+  }
+}
