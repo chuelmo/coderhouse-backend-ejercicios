@@ -16,12 +16,12 @@ Como he venido explicando en entregas anteriores, este repo no es un solo proyec
 
 ## Video probando los endpoints y el front
 
-- En Google Drive: [https://drive.google.com/file/d/1rNYoF_xUZME3xKCkD7EpmAaHlH60x6IQ/view?usp=sharing] VideoBy_chuelmo
-- En Mega: [https://mega.nz/file/AUYBXS5b#ESDreBpX38FxdixiqbedPscdzgQJGeScVmpeR7uJa4g] VideoBy_chuelmo
+- En Google Drive: [VideoBy_chuelmo](https://drive.google.com/file/d/1rNYoF_xUZME3xKCkD7EpmAaHlH60x6IQ/view?usp=sharing)
+- En Mega: [VideoBy_chuelmo](https://mega.nz/file/AUYBXS5b#ESDreBpX38FxdixiqbedPscdzgQJGeScVmpeR7uJa4g)
 
 ## Auth y usuario ADMINISTRADOR
 
-Como bien dice la letra hay determinados ENDPOINTS que no son accesibles si el usuario ADMINISTRADOR no es el que consulta, además en mi caso decidí que los ENDPOINTS no fueran públicos y que se el USUARIO no está "logueado" no puede acceder a ellos.
+Como bien dice la letra hay determinados ENDPOINTS que no son accesibles si el usuario ADMINISTRADOR no es el que consulta, además en mi caso decidí que los ENDPOINTS no fueran públicos y que si el USUARIO no está "logueado" no puede acceder a ellos.
 Para pobrar esta funcionalidad el proceso es manual (aún), se deben modificar los valores de las variables ADMINISTRADOR y USUARIO en el archivo /src/auth/index.js (que funciona como un middleware).
 
 # Desafío 6 - Websockets
