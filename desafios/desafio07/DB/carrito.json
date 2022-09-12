@@ -1,1 +1,53 @@
-[]
+[
+  {
+    "id": 3,
+    "timestamp": 1662835903641,
+    "productos": []
+  },
+  {
+    "id": 1,
+    "timestamp": 1662835901041,
+    "productos": [
+      {
+        "id": 2,
+        "timestamp": 1662835996483,
+        "nombre": "Mapa Mundi",
+        "descripcion": "El mundo",
+        "codigo": "el56",
+        "fotoUrl": "https://cdn2.iconfinder.com/data/icons/basic-flat-icon-set/128/tick-128.png",
+        "precio": "33",
+        "stock": "1"
+      },
+      {
+        "id": 3,
+        "timestamp": 1662836136116,
+        "nombre": "Patito de hule muy lindo",
+        "descripcion": "Un patito amarillo",
+        "codigo": "pat12",
+        "fotoUrl": "https://cdn4.iconfinder.com/data/icons/emojis-flat-pixel-perfect/64/emoji-15-128.png",
+        "precio": "2",
+        "stock": "4"
+      },
+      {
+        "id": 4,
+        "timestamp": 1662836064597,
+        "nombre": "Ropero",
+        "descripcion": "Para guardar ropa",
+        "codigo": "rop23",
+        "fotoUrl": "https://cdn3.iconfinder.com/data/icons/social-media-2169/24/social_media_social_media_logo_itunes-128.png",
+        "precio": "123",
+        "stock": "5"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "timestamp": 1662943198668,
+    "productos": []
+  },
+  {
+    "id": 2,
+    "timestamp": 1662835902281,
+    "productos": []
+  }
+]
