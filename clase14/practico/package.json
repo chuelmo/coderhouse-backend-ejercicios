@@ -1,0 +1,25 @@
+{
+  "name": "practico",
+  "version": "1.0.0",
+  "description": "Crear un proyecto basado en Webpack y Typescript que implemente un servidor node express cuyo punto de entrada será server.ts.\r Se implementará una clase llamada Perimetro que contenga tres métodos estáticos para calcular el perímetro de un cuadrado, un rectángulo y un círculo. Esta clase se guardará en un archivo llamado perimetro.ts \r En otro archivo llamado superficie.ts se implementará una clase llamada Superficie que contenga tres métodos estáticos para calcular la superficie de las mismas tres figuras.\r Los dos módulos se importarán en server.js.\r Realizar los endpoints get que permitan recibir las peticiones de cálculo con los parámetros correspondientes. La respuesta será en formato objeto y representará el tipo de cálculo, la figura, los parámetros de entrada y el resultado.\r Implementar el tipado en todas las clases y funciones del servidor.\r Probar con el navegador ó cliente http todas las posibles variantes.",
+  "main": "dist/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "node ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-loader": "^9.3.1",
+    "typescript": "^4.8.3",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-node-externals": "^3.0.0"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.13",
+    "express": "^4.18.1"
+  }
+}
