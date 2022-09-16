@@ -1,0 +1,55 @@
+extends layouts/layout.pug
+
+block cabecera
+    include partials/head.pug
+
+block contenido
+    include partials/barraMenu.pug
+    main
+        div(class='container fondo-gris p-5 mt-3 rounded')
+            h2(class='mt-3 mb-3 text-primary') Ingrese Producto
+            form
+                div(class='mb-3')
+                    label(for='name' class='form-label') Nombre
+                    input(type='text' class='form-control' id='name')
+                div(class='mb-3')
+                    label(for='price' class='form-label') Precio
+                    input(type='number' class='form-control' id='price')
+                div(class='mb-3')
+                    label(for='url' class='form-label') Foto URL
+                    input(type='text' class='form-control' id='url')
+            button(class='btn btn-primary' id='enviar') Enviar
+            h2(class='text-danger mt-3 mb-1') Productos
+            div(id='productos')
+                if (hayProductos)
+                    table(class='table bg-dark')
+                        tr
+                            th(class='text-warning') Nombre
+                            th(class='text-warning') Precio
+                            th(class='text-warning') Imagen
+                        each p in productos
+                            tr
+                                td(class='text-white')= p.title
+                                td(class='text-white')= p.price
+                                td(class='text-white')
+                                    img(src=p.thumbnail alt='imagen' height='64')
+                else
+                    p(class='mt-3 mb-3 p-3 aviso') No se encontraron productos
+        div(class='container fondo-gris p-5 mt-3 mb-5 rounded')
+            h2(class='mt-3 mb-3 text-primary') Centro de Mensajes
+            div(class='mb-3')
+                input(type='text' class='form-control' id='email' placeholder='correo@gmail.com')
+            div(class='mb-3' id='chat')
+                if (hayMensajes)
+                    p
+                        each m in mensajes
+                            span(class='text-primary')= m.email + ' '
+                            span(class='text-danger')= m.fecha + ' '
+                            span(class='text-success')= m.mensaje
+                            br
+            div(class='mb-3')
+                input(type='text' class='form-control' id='mensaje' placeholder='Ingresá un mensaje...')
+            button(class='btn btn-primary' id='enviarMsg') Enviar
+
+block pie
+    include partials/piePagina.pug

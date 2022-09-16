@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head.ejs', {title: 'Desafío 6'}); %>
+</head>
+
+<body>
+
+<%- include('../partials/barraMenu.ejs'); %>
+
+<main class="container fondo-gris p-5 mt-3">
+    <h1 class="mt-3 mb-3 text-primary">Acerca del desafío 8</h1>
+    <div class="rounded bg-light p-3">
+        <p><strong>&gt;&gt; Consigna 1:</strong> Tomando como base las clases Contenedor en memoria y en archivos, desarrollar un nuevo contenedor con idénticos métodos pero que funcione sobre bases de datos, utilizando Knex para la conexión. Esta clase debe recibir en su constructor el objeto de configuración de Knex y el nombre de la tabla sobre la cual trabajará. Luego, modificar el desafío 6 "Chat con Websocket", y:</p>
+        <ul>
+            <li>cambiar la persistencia de los mensajes de filesystem a base de datos SQLite3.</li>
+            <li>cambiar la persistencia de los productos de memoria a base de datos MariaDB.</li>
+        </ul>
+        <p><strong>&gt;&gt; Scripts:</strong></p>
+        <ul>
+            <li>Desarrollar también un script que utilizando knex cree las tablas necesarias para la persistencia en cuestión (tabla mensajes en sqlite3 y tabla productos en mariaDb).</li>
+        </ul>
+        <p><strong>&gt;&gt; Notas:</strong></p>
+        <ul>
+            <li>Definir una carpeta DB para almacenar la base datos SQLite3 llamada ecommerce.</li>
+        </ul>
+    </div>
+</main>
+
+<%- include('../partials/piePagina.ejs'); %>
+
+</body>
+
+</html>

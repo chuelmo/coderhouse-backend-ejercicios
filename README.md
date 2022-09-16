@@ -1,3 +1,26 @@
+# Desafío 8 - Nuestra primera base de datos
+
+## Consigna
+
+Tomando como base las clases Contenedor en memoria y en archivos, desarrollar un nuevo contenedor con idénticos métodos pero que funcione sobre bases de datos, utilizando Knex para la conexión. Esta clase debe recibir en su constructor el objeto de configuración de Knex y el nombre de la tabla sobre la cual trabajará. Luego, modificar el desafío entregable de la clase 11 "Chat con Websocket", y:
+
+- cambiar la persistencia de los mensajes de filesystem a base de datos SQLite3.
+- cambiar la persistencia de los productos de memoria a base de datos MariaDB.
+
+### Scripts
+
+Desarrollar también un script que utilizando knex cree las tablas necesarias para la persistencia en cuestión (tabla mensajes en sqlite3 y tabla productos en mariaDb).
+
+### Notas:
+
+Definir una carpeta DB para almacenar la base datos SQLite3 llamada ecommerce
+
+### Solución:
+
+- Para correr este desafío si se clona el repo hay que moverse a la carpeta desafios/desafio08
+- El script crearTablas se corre con: node crearTablas.js
+- El desafío se corre con npm run start-hbs || npm run start-ejs || npm run start-pug porque se mantuvieron los 3 motores de plantillas tal como los venía trabajando.
+
 # Desafío 7 - Primer entrega del Proyecto Final
 
 ## Como correr este desafío
