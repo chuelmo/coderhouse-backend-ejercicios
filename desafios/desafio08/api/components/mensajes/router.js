@@ -20,7 +20,7 @@ async function getAll(req, res) {
     }
 }
 
-async function insertMensaje((req, res) {
+async function insertMensaje(req, res) {
     if (req.body.email && req.body.fecha && req.body.mensaje) {
         const m = {
             "email": req.body.email,
@@ -34,7 +34,7 @@ async function insertMensaje((req, res) {
     } else {
         res.status(400).json({"error": "La petición no es correcta"});
     }
-});
+};
 
 module.exports = {
     router: router,

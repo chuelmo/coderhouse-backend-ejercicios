@@ -8,7 +8,7 @@ class MsgContenedor {
     }
 
     async save(mensaje) {
-        return this.knex('mensaje').insert(mensaje);
+        return this.knex('mensajes').insert(mensaje);
     }
 
     async destroy() {
