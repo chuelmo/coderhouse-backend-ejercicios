@@ -1,3 +1,8 @@
+# Clase 17 - mongoDB
+
+Con la intención de probar mongo y a su vez utilizar containers con docker es que instalé en una Mac Docker y utilizé los ejemplos del sitio oficial de Docker para levantar un container con mongoDB.
+El archivo docker-compose.yml levanta un par de containers, uno con mongoDB y el otro con una solución "mongo-express" basada en nodejs para poder consultar el server mongo.
+
 # Desafío 8 - Nuestra primera base de datos
 
 ## Consigna

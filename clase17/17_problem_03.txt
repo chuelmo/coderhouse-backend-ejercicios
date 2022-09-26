@@ -1,0 +1,40 @@
+$ docker-compose exec mongo /bin/sh
+# mongosh -u root -p example
+test> use mibase
+switched to db mibase
+mibase> db.usuarios.insertMany([{nombre: 'Juan', apellido: 'Perez', edad: 23, email: 'jp@gmail.com'},{nombre: 'Pedro', apellido: 'Mei', edad: 21, email: 'pm@gmail.com'},{nombre: 'Juana', apellido: 'Suarez', edad: 25, email: 'js@gmail.com'}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6331cafe9109df524dfcaf9c"),
+    '1': ObjectId("6331cafe9109df524dfcaf9d"),
+    '2': ObjectId("6331cafe9109df524dfcaf9e")
+  }
+}
+mibase> show collections
+usuarios
+mibase> db.usuarios.find()
+[
+  {
+    _id: ObjectId("6331cafe9109df524dfcaf9c"),
+    nombre: 'Juan',
+    apellido: 'Perez',
+    edad: 23,
+    email: 'jp@gmail.com'
+  },
+  {
+    _id: ObjectId("6331cafe9109df524dfcaf9d"),
+    nombre: 'Pedro',
+    apellido: 'Mei',
+    edad: 21,
+    email: 'pm@gmail.com'
+  },
+  {
+    _id: ObjectId("6331cafe9109df524dfcaf9e"),
+    nombre: 'Juana',
+    apellido: 'Suarez',
+    edad: 25,
+    email: 'js@gmail.com'
+  }
+]
+mibase> 

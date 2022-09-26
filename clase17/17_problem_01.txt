@@ -1,0 +1,180 @@
+Realizar las siguientes acciones utilizando un servidor de base de datos MongoDB:
+
+1) Crear una carpeta llamada 'base' para contener la estructura de base de datos.
+2) Ejecutar en una consola el motor de base de datos MongoDB, que debe seleccionar la carpeta 'base' como almacenamiento de su estructura.
+3) Iniciar Mongo shell en otra consola, verificando la conexión con el servidor.
+4) Listar las bases de datos disponibles
+5) Crear una base de datos en MongoDB llamada 'sistema' y seleccionarla con base de trabajo.
+6) Insertar un documento en la colección usuarios que contenga los campos: nombre y edad.
+7) Listar los documentos dentro de la colección usuarios.
+8) Mostrar las colecciones de la base 'sistema'.
+9) Insertar tres documentos más con el mismo formato y valores distintos en la colección usuarios.
+10) Listarlos nuevamente verificando que haya 4 documentos dentro de la colección usuarios.
+11) Insertar dentro de una colección llamada 'productos' cuatro documentos con los siguientes campos: nombre, precio y stock.
+12) Mostrar las colecciones de la base 'sistema'.
+13) Listar todos los documentos de la colección 'productos'.
+
+
+Solución:
+
+Primero: levantar Docker
+Verificar: 
+    $ docker-compose ps
+    192:clase17 christian.huelmo$ docker-compose ps
+             Name                        Command               State           Ports         
+    -----------------------------------------------------------------------------------------
+    clase17-mongo-1           docker-entrypoint.sh mongod      Up      27017/tcp             
+    clase17-mongo-express-1   tini -- /docker-entrypoint ...   Up      0.0.0.0:8081->8081/tcp
+
+Si no estuviera corriendo el container de mongo:
+    $ docker-compose up -d
+
+1) En este caso el punto uno quedó configurado en el archivo docker-compose.yml en volumes:
+
+2) Al estar corriendo el container mongoDB ya está corriendo.
+
+3) docker-compose exec mongo /bin/sh
+# mongosh -u root -p example
+Current Mongosh Log ID: 63319de7f1181353084fdf7a
+Connecting to:          mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.5.4
+Using MongoDB:          6.0.1
+Using Mongosh:          1.5.4
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2022-09-26T12:28:00.010+00:00: vm.max_map_count is too low
+------
+
+------
+   Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+   metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+   
+   The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+   and anyone you share the URL with. MongoDB may use this information to make product
+   improvements and to suggest MongoDB products and deployment options to you.
+   
+   To enable free monitoring, run the following command: db.enableFreeMonitoring()
+   To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+------
+
+4) test> show databases
+admin   100.00 KiB
+config   60.00 KiB
+local    72.00 KiB
+test> 
+
+5) use sistema
+test> use sistema
+switched to db sistema
+sistema>
+
+6) sistema> db.usuarios.insert({nombre: 'Juan', edad: 32})
+DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId("6331a062710a3c70066f0994") }
+}
+sistema> db.usuarios.insertOne({nombre: 'Pedro', edad: 47})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6331a0d1710a3c70066f0995")
+}
+sistema>
+7) sistema> db.usuarios.find()
+[
+  {
+    _id: ObjectId("6331a062710a3c70066f0994"),
+    nombre: 'Juan',
+    edad: 32
+  },
+  {
+    _id: ObjectId("6331a0d1710a3c70066f0995"),
+    nombre: 'Pedro',
+    edad: 47
+  }
+]
+sistema> 
+8) sistema> show collections
+usuarios
+sistema> 
+9) sistema> db.usuarios.insertMany([{nombre: 'Marta', edad: 22},{nombre: 'Julia', edad:27}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6331a1e9710a3c70066f0996"),
+    '1': ObjectId("6331a1e9710a3c70066f0997")
+  }
+}
+sistema> 
+10) sistema> db.usuarios.find()
+[
+  {
+    _id: ObjectId("6331a062710a3c70066f0994"),
+    nombre: 'Juan',
+    edad: 32
+  },
+  {
+    _id: ObjectId("6331a0d1710a3c70066f0995"),
+    nombre: 'Pedro',
+    edad: 47
+  },
+  {
+    _id: ObjectId("6331a1e9710a3c70066f0996"),
+    nombre: 'Marta',
+    edad: 22
+  },
+  {
+    _id: ObjectId("6331a1e9710a3c70066f0997"),
+    nombre: 'Julia',
+    edad: 27
+  }
+]
+sistema> 
+11) db.productos.insertMany([{nombre: 'regla', precio: 40, stock: 12},{nombre: 'mapa', precio: 50, stock: 9},{nombre: 'goma', pprecio: 8, stock: 120},{nombre: 'cascola', precio: 76, stock: 41}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6331a2a5710a3c70066f0998"),
+    '1': ObjectId("6331a2a5710a3c70066f0999"),
+    '2': ObjectId("6331a2a5710a3c70066f099a"),
+    '3': ObjectId("6331a2a5710a3c70066f099b")
+  }
+}
+sistema>
+12) sistema> show collections
+productos
+usuarios
+sistema>
+13) sistema> db.productos.find()
+[
+  {
+    _id: ObjectId("6331a2a5710a3c70066f0998"),
+    nombre: 'regla',
+    precio: 40,
+    stock: 12
+  },
+  {
+    _id: ObjectId("6331a2a5710a3c70066f0999"),
+    nombre: 'mapa',
+    precio: 50,
+    stock: 9
+  },
+  {
+    _id: ObjectId("6331a2a5710a3c70066f099a"),
+    nombre: 'goma',
+    precio: 8,
+    stock: 120
+  },
+  {
+    _id: ObjectId("6331a2a5710a3c70066f099b"),
+    nombre: 'cascola',
+    precio: 76,
+    stock: 41
+  }
+]
+
+
+
+
