@@ -1,0 +1,122 @@
+Sobre la base y los datos cargados anteriormente
+1) Insertar cinco documentos más en la colección clientes con los siguientes datos:
+{ "nombre" : "Pablo", "edad" : 25 }
+{ "nombre" : "Juan", "edad" : 22 }
+{ "nombre" : "Lucia", "edad" : 25 }
+{ "nombre" : "Juan", "edad" : 29 }
+{ "nombre" : "Fede", "edad" : 35 }
+2) Listar todos los documentos de la colección clientes ordenados por edad descendente.
+3) Listar el cliente más joven.
+4) Listar el segundo cliente más joven.
+5) Listar los clientes llamados 'Juan'
+6) Listar los clientes llamados 'Juan' que tengan 29 años.
+7) Listar los clientes llamados 'Juan' ó 'Lucia'.
+8) Listar los clientes que tengan más de 25 años.
+9) Listar los clientes que tengan 25 años ó menos.
+10) Listar los clientes que NO tengan 25 años.
+11) Listar los clientes que estén entre los 26 y 35 años.
+12) Actualizar la edad de Fede a 36 años, listando y verificando que no aparezca en el último listado.
+13) Actualizar todas las edades de 25 años a 26 años, listando y verificando que aparezcan en el último listado.
+14) Borrar los clientes que se llamen 'Juan' y listar verificando el resultado.
+
+1) db.clientes.insertMany([{nombre: 'Pablo', edad: 25}, {nombre: 'Juan', edad: 22}, {nombre: 'Lucia', edad: 25}, {nombre: 'Juan', edad: 29}, {nombre: 'Fede', edad: 35}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("6331f8c79d566a859eb7aa1b"),
+                ObjectId("6331f8c79d566a859eb7aa1c"),
+                ObjectId("6331f8c79d566a859eb7aa1d"),
+                ObjectId("6331f8c79d566a859eb7aa1e"),
+                ObjectId("6331f8c79d566a859eb7aa1f")
+        ]
+}
+>
+
+2) > db.clientes.find().sort({edad: -1})
+{ "_id" : ObjectId("6331f1e09d566a859eb7aa13"), "nombre" : "Sergio", "edad" : 47 }
+{ "_id" : ObjectId("6331f24b9d566a859eb7aa16"), "nombre" : "Michel", "edad" : 37 }
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1f"), "nombre" : "Fede", "edad" : 35 }
+{ "_id" : ObjectId("6331f24b9d566a859eb7aa15"), "nombre" : "Paul", "edad" : 32 }
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1e"), "nombre" : "Juan", "edad" : 29 }
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1b"), "nombre" : "Pablo", "edad" : 25 }
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1d"), "nombre" : "Lucia", "edad" : 25 }
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1c"), "nombre" : "Juan", "edad" : 22 }
+{ "_id" : ObjectId("6331f24b9d566a859eb7aa14"), "nombre" : "Mariela", "edad" : 17 }
+
+3) > db.clientes.find().limit(1).sort({edad: 1})
+{ "_id" : ObjectId("6331f24b9d566a859eb7aa14"), "nombre" : "Mariela", "edad" : 17 }
+
+4) > db.clientes.find().skip(1).limit(1).sort({edad: 1})
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1c"), "nombre" : "Juan", "edad" : 22 }
+
+5) > db.clientes.find({"nombre": {$eq: "Juan"}})
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1c"), "nombre" : "Juan", "edad" : 22 }
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1e"), "nombre" : "Juan", "edad" : 29 }
+
+6) > db.clientes.find({$and: [{"nombre": {$eq: "Juan"}}, {"edad" : {$eq: 29}}]})
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1e"), "nombre" : "Juan", "edad" : 29 }
+
+7) > db.clientes.find({$and: [{"nombre": {$eq: "Juan"}}, {"edad" : {$eq: 29}}]})
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1e"), "nombre" : "Juan", "edad" : 29 }
+> db.clientes.find({$or: [{"nombre": {$eq: "Juan"}}, {"nombre" : {$eq: "Lucia"}}]})
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1c"), "nombre" : "Juan", "edad" : 22 }
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1d"), "nombre" : "Lucia", "edad" : 25 }
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1e"), "nombre" : "Juan", "edad" : 29 }
+
+8) > db.clientes.find({"edad": {$gt: 25}})
+{ "_id" : ObjectId("6331f1e09d566a859eb7aa13"), "nombre" : "Sergio", "edad" : 47 }
+{ "_id" : ObjectId("6331f24b9d566a859eb7aa15"), "nombre" : "Paul", "edad" : 32 }
+{ "_id" : ObjectId("6331f24b9d566a859eb7aa16"), "nombre" : "Michel", "edad" : 37 }
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1e"), "nombre" : "Juan", "edad" : 29 }
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1f"), "nombre" : "Fede", "edad" : 35 }
+
+9) > db.clientes.find({"edad": {$lte: 25}})
+{ "_id" : ObjectId("6331f24b9d566a859eb7aa14"), "nombre" : "Mariela", "edad" : 17 }
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1b"), "nombre" : "Pablo", "edad" : 25 }
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1c"), "nombre" : "Juan", "edad" : 22 }
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1d"), "nombre" : "Lucia", "edad" : 25 }
+
+10) > db.clientes.find({"edad": {$ne: 25}})
+{ "_id" : ObjectId("6331f1e09d566a859eb7aa13"), "nombre" : "Sergio", "edad" : 47 }
+{ "_id" : ObjectId("6331f24b9d566a859eb7aa14"), "nombre" : "Mariela", "edad" : 17 }
+{ "_id" : ObjectId("6331f24b9d566a859eb7aa15"), "nombre" : "Paul", "edad" : 32 }
+{ "_id" : ObjectId("6331f24b9d566a859eb7aa16"), "nombre" : "Michel", "edad" : 37 }
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1c"), "nombre" : "Juan", "edad" : 22 }
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1e"), "nombre" : "Juan", "edad" : 29 }
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1f"), "nombre" : "Fede", "edad" : 35 }
+
+11) > db.clientes.find({$and: [{"edad": {$gte: 26}}, {"edad" : {$lte: 35}}]})
+{ "_id" : ObjectId("6331f24b9d566a859eb7aa15"), "nombre" : "Paul", "edad" : 32 }
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1e"), "nombre" : "Juan", "edad" : 29 }
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1f"), "nombre" : "Fede", "edad" : 35 }
+
+12) > db.clientes.updateOne({"nombre": {$eq: "Fede"}}, {$set: {"edad": 36}}, {"upsert": false})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+
+> db.clientes.find({$and: [{"edad": {$gte: 26}}, {"edad" : {$lte: 35}}]})
+{ "_id" : ObjectId("6331f24b9d566a859eb7aa15"), "nombre" : "Paul", "edad" : 32 }
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1e"), "nombre" : "Juan", "edad" : 29 }
+
+> db.clientes.find({"nombre": {$eq: "Fede"}})
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1f"), "nombre" : "Fede", "edad" : 36 }
+
+13) > db.clientes.updateMany({"edad": {$eq: 25}}, {$set: {"edad": 26}}, {"upsert": false})
+{ "acknowledged" : true, "matchedCount" : 2, "modifiedCount" : 2 }
+
+> db.clientes.find({$and: [{"edad": {$gte: 26}}, {"edad" : {$lte: 35}}]})
+{ "_id" : ObjectId("6331f24b9d566a859eb7aa15"), "nombre" : "Paul", "edad" : 32 }
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1b"), "nombre" : "Pablo", "edad" : 26 }
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1d"), "nombre" : "Lucia", "edad" : 26 }
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1e"), "nombre" : "Juan", "edad" : 29 }
+
+14) > db.clientes.deleteMany({"nombre": "Juan"})
+{ "acknowledged" : true, "deletedCount" : 2 }
+
+> db.clientes.find()
+{ "_id" : ObjectId("6331f1e09d566a859eb7aa13"), "nombre" : "Sergio", "edad" : 47 }
+{ "_id" : ObjectId("6331f24b9d566a859eb7aa14"), "nombre" : "Mariela", "edad" : 17 }
+{ "_id" : ObjectId("6331f24b9d566a859eb7aa15"), "nombre" : "Paul", "edad" : 32 }
+{ "_id" : ObjectId("6331f24b9d566a859eb7aa16"), "nombre" : "Michel", "edad" : 37 }
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1b"), "nombre" : "Pablo", "edad" : 26 }
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1d"), "nombre" : "Lucia", "edad" : 26 }
+{ "_id" : ObjectId("6331f8c79d566a859eb7aa1f"), "nombre" : "Fede", "edad" : 36 }

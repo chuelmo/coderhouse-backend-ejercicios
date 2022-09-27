@@ -1,0 +1,64 @@
+Utilizando Mongo shell, realizar las siguientes acciones:
+1) Crear una base de datos en MongoDB llamada 'empresa'.
+2) Crear una colección llamada 'clientes' dentro de esa base.
+3) Insertar un documento en la colección clientes que contenga los campos ‘nombre’ y ‘edad’.
+4) Insertar un array de tres documentos con el mismo formato y valores distintos en la colección clientes (modo bulk).
+5) Utilizando un sólo comando, crear una colección llamada 'articulos' e insertar dentro de ella un array de cuatro documentos con los campos ‘nombre’, ‘precio’ y ‘stock’.
+6) Mostrar las colecciones de la base 'empresa'.
+7) Listar todos los documentos dentro de cada una de las colecciones.
+8) Tomar el Object ID de uno de los documentos y comprobar fecha y hora de creación.
+9) Mostrar la cantidad de documentos que tiene la colección articulos.
+
+1) > use empresa
+switched to db empresa
+
+2) y 3) > db.clientes.insertOne({nombre: 'Sergio', edad: 47})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("6331f1e09d566a859eb7aa13")
+}
+
+4) > db.clientes.insertMany([{nombre: 'Mariela', edad: 17},{nombre: 'Paul', edad: 32},{nombre: 'Michel', edad: 37}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("6331f24b9d566a859eb7aa14"),
+                ObjectId("6331f24b9d566a859eb7aa15"),
+                ObjectId("6331f24b9d566a859eb7aa16")
+        ]
+}
+
+5) > db.articulos.insertMany([{nombre: 'Regla', precio: 17, stock: 2}, {nombre: 'Mapa mundi', precio: 239, stock: 8}, {nombre: 'Cascola', precio: 72, stock: 60}, {nombre: 'Colores', precio: 126, stock: 16}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("6331f40e9d566a859eb7aa17"),
+                ObjectId("6331f40e9d566a859eb7aa18"),
+                ObjectId("6331f40e9d566a859eb7aa19"),
+                ObjectId("6331f40e9d566a859eb7aa1a")
+        ]
+}
+
+6) > show collections
+articulos
+clientes
+
+7)  db.clientes.find()
+{ "_id" : ObjectId("6331f1e09d566a859eb7aa13"), "nombre" : "Sergio", "edad" : 47 }
+{ "_id" : ObjectId("6331f24b9d566a859eb7aa14"), "nombre" : "Mariela", "edad" : 17 }
+{ "_id" : ObjectId("6331f24b9d566a859eb7aa15"), "nombre" : "Paul", "edad" : 32 }
+{ "_id" : ObjectId("6331f24b9d566a859eb7aa16"), "nombre" : "Michel", "edad" : 37 }
+>
+
+db.articulos.find()
+{ "_id" : ObjectId("6331f40e9d566a859eb7aa17"), "nombre" : "Regla", "precio" : 17, "stock" : 2 }
+{ "_id" : ObjectId("6331f40e9d566a859eb7aa18"), "nombre" : "Mapa mundi", "precio" : 239, "stock" : 8 }
+{ "_id" : ObjectId("6331f40e9d566a859eb7aa19"), "nombre" : "Cascola", "precio" : 72, "stock" : 60 }
+{ "_id" : ObjectId("6331f40e9d566a859eb7aa1a"), "nombre" : "Colores", "precio" : 126, "stock" : 16 }
+>
+
+8) https://steveridout.com/mongo-object-time/ y pegar el ObjectId
+
+9) > db.articulos.count()
+4
+>

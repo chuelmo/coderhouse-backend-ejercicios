@@ -1,0 +1,52 @@
+MongoDB
+Usuarios y permisos
+
+En MongoDB es posible crear usuarios y asignarles acceso mediante roles. Veremos cómo crear un usuario y asignarle un rol para que tenga ciertos accesos limitados a una base de datos.
+
+Cuando instalamos MongoDB el nivel de seguridad (authorization) está deshabilitado. Para habilitarlo primero hay que crear un usuario root en la base de datos admin.
+
+1) Conectarse a MongoDB
+2) use admin
+3) db.createUser(
+  {
+    user: "root",
+    pwd: "example",
+    roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ]
+  }
+)
+
+4) exit
+5) C:\Program Files\MongoDB\Server\6.0\bin\mongod.cfg (en Windows), editar este archivo y escribir:
+security:
+  authorization: enabled
+
+6) Reiniciar mongoDB desde los servicios de windows y conectarse de la siguiente manera:
+ .\mongosh.exe -u root -p example
+
+Listo, ahora podemos crear usuarios.
+
+Crearemos dos usuarios para una base de datos
+    Usuario lector: tendrá acceso de lectura a la base de datos.
+    Usuario escritor: tendrá acceso de lectura y escritura a la base de datos.
+
+Para esto hay que escribir use admin antes de utilizar el comando createUser
+
+a) db.createUser(
+  {
+    user: "lector",
+    pwd: "123456",
+    roles: [
+       { role: "read", db: "blog" }
+    ]
+  }
+)
+
+b) db.createUser(
+  {
+    user: "escritor",
+    pwd: "123456",
+    roles: [
+       { role: "readWrite", db: "blog" }
+    ]
+  }
+)

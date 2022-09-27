@@ -1,0 +1,349 @@
+* Crear una base de datos llamada ecommerce
+
+> .\mongosh.exe -u root -p example
+Connecting to:          mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.0
+Using MongoDB:          6.0.1
+Using Mongosh:          1.6.0
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+test> use ecommerce
+switched to db ecommerce
+ecommerce>
+
+* Agregar 10 documentos a cada colección.
+ecommerce> db.productos.insertMany([{"title": "Mapa mundi", "price": 78, "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-128.png"}, {"title": "Reloj", "price": 120, "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/clock-stopwatch-timer-time-128.png"}, {"title": "Escuadra", "price": 45, "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-128.png"}, {"title": "Lapiz", "price": 170, "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/pencil-pen-stationery-school-128.png"}, {"title": "Galera", "price": 390, "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/graduation-square-academic-cap-school-128.png"}, {"title": "Calculadora", "price": 890, "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-128.png"}, {"title": "Pizarra", "price": 1768, "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/board-math-class-school-128.png"}, {"title": "Microscopio", "price": 2450, "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/microscope-lab-science-school-128.png"}, {"title": "Manzana de plastico", "price": 60, "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/apple-fruit-science-school-128.png"}, {"title": "Probeta", "price": 178, "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/tube-lab-science-school-128.png"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("63324269ca84b881a5ba49cc"),
+    '1': ObjectId("63324269ca84b881a5ba49cd"),
+    '2': ObjectId("63324269ca84b881a5ba49ce"),
+    '3': ObjectId("63324269ca84b881a5ba49cf"),
+    '4': ObjectId("63324269ca84b881a5ba49d0"),
+    '5': ObjectId("63324269ca84b881a5ba49d1"),
+    '6': ObjectId("63324269ca84b881a5ba49d2"),
+    '7': ObjectId("63324269ca84b881a5ba49d3"),
+    '8': ObjectId("63324269ca84b881a5ba49d4"),
+    '9': ObjectId("63324269ca84b881a5ba49d5")
+  }
+}
+
+ecommerce> db.mensajes.insertMany([{"email": "jp@gmail.com", "fecha": "26/09/2022 20:02", "mensaje": "Hola!"}, {"email": "rz@gmail.com", "fecha": "26/09/2022 20:03", "mensaje": "Hola a todos!"}, {"email": "jp@gmail.com", "fecha": "26/09/2022 20:04", "mensaje": "Como va la cosa?"}, {"email": "rrz@gmail.com", "fecha": "26/09/2022 20:06", "mensaje": "Hola, desde Japón"}, {"email": "jp@gmail.com", "fecha": "26/09/2022 20:07", "mensaje": "Que bueno! Que haces por acá?"}, {"email": "tyu@gmail.com", "fecha": "26/09/2022 20:10", "mensaje": "De que hablan?"}, {"email": "jp@gmail.com", "fecha": "26/09/2022 20:12", "mensaje": "Nos estamos presentando"}, {"email": "you@gmail.com", "fecha": "26/09/2022 20:14", "mensaje": "Hola desde argentina"}, {"email": "jp@gmail.com", "fecha": "26/09/2022 20:15", "mensaje": "Estamos internacionales"}, {"email": "rty@gmail.com", "fecha": "26/09/2022 20:17", "mensaje": "Hola y chau!"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("63324469ca84b881a5ba49d6"),
+    '1': ObjectId("63324469ca84b881a5ba49d7"),
+    '2': ObjectId("63324469ca84b881a5ba49d8"),
+    '3': ObjectId("63324469ca84b881a5ba49d9"),
+    '4': ObjectId("63324469ca84b881a5ba49da"),
+    '5': ObjectId("63324469ca84b881a5ba49db"),
+    '6': ObjectId("63324469ca84b881a5ba49dc"),
+    '7': ObjectId("63324469ca84b881a5ba49dd"),
+    '8': ObjectId("63324469ca84b881a5ba49de"),
+    '9': ObjectId("63324469ca84b881a5ba49df")
+  }
+}
+ecommerce>
+
+* Listar todos los documentos en cada colección
+ecommerce> db.productos.find()
+[
+  {
+    _id: ObjectId("63324269ca84b881a5ba49cc"),
+    title: 'Mapa mundi',
+    price: 78,
+    thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-128.png'
+  },
+  {
+    _id: ObjectId("63324269ca84b881a5ba49cd"),
+    title: 'Reloj',
+    price: 120,
+    thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/clock-stopwatch-timer-time-128.png'
+  },
+  {
+    _id: ObjectId("63324269ca84b881a5ba49ce"),
+    title: 'Escuadra',
+    price: 45,
+    thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-128.png'
+  },
+  {
+    _id: ObjectId("63324269ca84b881a5ba49cf"),
+    title: 'Lapiz',
+    price: 170,
+    thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/pencil-pen-stationery-school-128.png'
+  },
+  {
+    _id: ObjectId("63324269ca84b881a5ba49d0"),
+    title: 'Galera',
+    price: 390,
+    thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/graduation-square-academic-cap-school-128.png'
+  },
+  {
+    _id: ObjectId("63324269ca84b881a5ba49d1"),
+    title: 'Calculadora',
+    price: 890,
+    thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-128.png'
+  },
+  {
+    _id: ObjectId("63324269ca84b881a5ba49d2"),
+    title: 'Pizarra',
+    price: 1768,
+    thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/board-math-class-school-128.png'
+  },
+  {
+    _id: ObjectId("63324269ca84b881a5ba49d3"),
+    title: 'Microscopio',
+    price: 2450,
+    thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/microscope-lab-science-school-128.png'
+  },
+  {
+    _id: ObjectId("63324269ca84b881a5ba49d4"),
+    title: 'Manzana de plastico',
+    price: 60,
+    thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/apple-fruit-science-school-128.png'
+  },
+  {
+    _id: ObjectId("63324269ca84b881a5ba49d5"),
+    title: 'Probeta',
+    price: 178,
+    thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/tube-lab-science-school-128.png'
+  }
+]
+
+ecommerce> db.mensajes.find()
+[
+  {
+    _id: ObjectId("63324469ca84b881a5ba49d6"),
+    email: 'jp@gmail.com',
+    fecha: '26/09/2022 20:02',
+    mensaje: 'Hola!'
+  },
+  {
+    _id: ObjectId("63324469ca84b881a5ba49d7"),
+    email: 'rz@gmail.com',
+    fecha: '26/09/2022 20:03',
+    mensaje: 'Hola a todos!'
+  },
+  {
+    _id: ObjectId("63324469ca84b881a5ba49d8"),
+    email: 'jp@gmail.com',
+    fecha: '26/09/2022 20:04',
+    mensaje: 'Como va la cosa?'
+  },
+  {
+    _id: ObjectId("63324469ca84b881a5ba49d9"),
+    email: 'rrz@gmail.com',
+    fecha: '26/09/2022 20:06',
+    mensaje: 'Hola, desde Japón'
+  },
+  {
+    _id: ObjectId("63324469ca84b881a5ba49da"),
+    email: 'jp@gmail.com',
+    fecha: '26/09/2022 20:07',
+    mensaje: 'Que bueno! Que haces por acá?'
+  },
+  {
+    _id: ObjectId("63324469ca84b881a5ba49db"),
+    email: 'tyu@gmail.com',
+    fecha: '26/09/2022 20:10',
+    mensaje: 'De que hablan?'
+  },
+  {
+    _id: ObjectId("63324469ca84b881a5ba49dc"),
+    email: 'jp@gmail.com',
+    fecha: '26/09/2022 20:12',
+    mensaje: 'Nos estamos presentando'
+  },
+  {
+    _id: ObjectId("63324469ca84b881a5ba49dd"),
+    email: 'you@gmail.com',
+    fecha: '26/09/2022 20:14',
+    mensaje: 'Hola desde argentina'
+  },
+  {
+    _id: ObjectId("63324469ca84b881a5ba49de"),
+    email: 'jp@gmail.com',
+    fecha: '26/09/2022 20:15',
+    mensaje: 'Estamos internacionales'
+  },
+  {
+    _id: ObjectId("63324469ca84b881a5ba49df"),
+    email: 'rty@gmail.com',
+    fecha: '26/09/2022 20:17',
+    mensaje: 'Hola y chau!'
+  }
+]
+
+* Mostrar la cantidad de documentos en cada colección:
+ecommerce> db.productos.estimatedDocumentCount()
+10
+ecommerce> db.mensajes.estimatedDocumentCount()
+10
+ecommerce>
+
+* Realizar un CRUD
+    * Agregar un producto más.
+
+ecommerce> db.productos.insertOne({"title": "Camioncito", "price": 730, "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/bus-vehicle-transport-school-128.png"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("633245e1ca84b881a5ba49e0")
+}
+ecommerce>
+
+    * Listar los productos con precio menor a 250
+
+ecommerce> db.productos.find({"price": {$lt: 250}})
+[
+  {
+    _id: ObjectId("63324269ca84b881a5ba49cc"),
+    title: 'Mapa mundi',
+    price: 78,
+    thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-128.png'
+  },
+  {
+    _id: ObjectId("63324269ca84b881a5ba49cd"),
+    title: 'Reloj',
+    price: 120,
+    thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/clock-stopwatch-timer-time-128.png'
+  },
+  {
+    _id: ObjectId("63324269ca84b881a5ba49ce"),
+    title: 'Escuadra',
+    price: 45,
+    thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-128.png'
+  },
+  {
+    _id: ObjectId("63324269ca84b881a5ba49cf"),
+    title: 'Lapiz',
+    price: 170,
+    thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/pencil-pen-stationery-school-128.png'
+  },
+  {
+    _id: ObjectId("63324269ca84b881a5ba49d4"),
+    title: 'Manzana de plastico',
+    price: 60,
+    thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/apple-fruit-science-school-128.png'
+  },
+  {
+    _id: ObjectId("63324269ca84b881a5ba49d5"),
+    title: 'Probeta',
+    price: 178,
+    thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/tube-lab-science-school-128.png'
+  }
+]
+ecommerce>
+
+    * Productos con precio entre 250 y 500
+
+ecommerce> db.productos.find({$and: [{"price": {$gte: 250}},{"price": {$lte: 500}}]})
+[
+  {
+    _id: ObjectId("63324269ca84b881a5ba49d0"),
+    title: 'Galera',
+    price: 390,
+    thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/graduation-square-academic-cap-school-128.png'
+  }
+]
+
+    * Productos con precio mayor que 1250
+
+ecommerce> db.productos.find({"price": {$gt: 1250}})
+[
+  {
+    _id: ObjectId("63324269ca84b881a5ba49d2"),
+    title: 'Pizarra',
+    price: 1768,
+    thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/board-math-class-school-128.png'
+  },
+  {
+    _id: ObjectId("63324269ca84b881a5ba49d3"),
+    title: 'Microscopio',
+    price: 2450,
+    thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/microscope-lab-science-school-128.png'
+  }
+]
+ecommerce>
+
+    * Traer el nombre del tercer producto más barato
+
+ecommerce> db.productos.find({},{_id:0, title: 1}).skip(2).limit(1).sort({price: 1})
+[ { title: 'Mapa mundi' } ]
+ecommerce>
+
+* Hacer una actualización sobre todos los productos, agregando el campo stock con un valor de 100.
+
+ecommerce> db.productos.updateMany({}, {$set: {"stock": 100}}, {"upsert": false})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 11,
+  modifiedCount: 11,
+  upsertedCount: 0
+}
+
+* Cambiar el stock a 0 de los productos con precio mayor a 1000
+
+ecommerce> db.productos.updateMany({price: {$gt: 1000}}, {$set: {"stock": 0}}, {"upsert": false})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+
+* Borrar los productos con precio menor a 1000
+
+ecommerce> db.productos.deleteMany({price: {$lt: 1000}})
+{ acknowledged: true, deletedCount: 9 }
+ecommerce>
+
+* Crear un usuario "pepe" con clave "asd456" que solo pueda leer la db ecommerce.
+
+ecommerce> use admin
+switched to db admin
+admin> db.createUser({user: "pepe", pwd: "asd456", roles: [{ role: "read", db: "ecommerce" }]})
+{ ok: 1 }
+admin>
+
+Testeando el usuario:
+
+> .\mongosh.exe -u pepe -p asd456
+Connecting to:          mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.0
+Using MongoDB:          6.0.1
+Using Mongosh:          1.6.0
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+test> show databases
+ecommerce  112.00 KiB
+test> show collections
+MongoServerError: not authorized on test to execute command { listCollections: 1, filter: {}, cursor: {}, nameOnly: true, authorizedCollections: false, lsid: { id: UUID("2f7a0a25-73c3-45d8-9e9f-2bf5f5d08b96") }, $db: "test", $readPreference: { mode: "primaryPreferred" } }
+test> use ecommerce
+switched to db ecommerce
+ecommerce> show collections
+mensajes
+productos
+ecommerce> db.productos.find()
+[
+  {
+    _id: ObjectId("63324269ca84b881a5ba49d2"),
+    title: 'Pizarra',
+    price: 1768,
+    thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/board-math-class-school-128.png',
+    stock: 0
+  },
+  {
+    _id: ObjectId("63324269ca84b881a5ba49d3"),
+    title: 'Microscopio',
+    price: 2450,
+    thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/microscope-lab-science-school-128.png',
+    stock: 0
+  }
+]
+ecommerce> db.productos.insertOne({title: "prueba", price: 200})
+MongoServerError: not authorized on ecommerce to execute command { insert: "productos", documents: [ { title: "prueba", price: 200, _id: ObjectId('63324d20d9046fe2f562aad9') } ], ordered: true, lsid: { id: UUID("7ba91f71-5dcb-488e-b94e-9109bc27a6a7") }, $db: "ecommerce" }
+ecommerce>
